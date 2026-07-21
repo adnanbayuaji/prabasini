@@ -1,0 +1,2 @@
+# This folder is used to store uploaded Excel/CSV files temporarily during import
+# Make sure this directory has write permissions (755 or 777)

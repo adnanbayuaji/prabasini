@@ -1,0 +1,31 @@
+{
+    "name": "prabasini/pap-management",
+    "description": "PAP (Program Alokasi Produk) Management System - Web Application",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prabasini Developer",
+            "email": "dev@prabasini.local"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "phpoffice/phpspreadsheet": "^5.9"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "keywords": [
+        "pap",
+        "management",
+        "excel",
+        "whatsapp",
+        "php"
+    ],
+    "support": {
+        "email": "support@prabasini.local"
+    }
+}
