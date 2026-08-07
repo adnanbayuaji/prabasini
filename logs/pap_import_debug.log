@@ -1,0 +1,51 @@
+{"time":"2026-07-21 15:01:16","debug_id":"papdbg_6a5f274c34fcb9.37470377","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:01:16","debug_id":"papdbg_6a5f274c34fcb9.37470377","message":"handleGetListPap done","context":{"total":"0","limit":200,"offset":0}}
+{"time":"2026-07-21 15:03:42","debug_id":"papdbg_6a5f27de970c95.29712209","message":"Request start","context":{"method":"POST","action":"upload","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":"pap-1784620876200"}}
+{"time":"2026-07-21 15:03:42","debug_id":"papdbg_6a5f27de970c95.29712209","message":"handleUploadPap start","context":{"has_file":true,"post_keys":["action","debug_run_id"]}}
+{"time":"2026-07-21 15:03:42","debug_id":"papdbg_6a5f27de970c95.29712209","message":"Uploaded file meta","context":{"name":"pap.xls","size":24064,"tmp_name":"D:\\xampp\\tmp\\phpB95D.tmp","error":0}}
+{"time":"2026-07-21 15:03:42","debug_id":"papdbg_6a5f27de970c95.29712209","message":"Primary parser failed","context":{"error":"Format .xls biner memerlukan library tambahan (PhpSpreadsheet). Simpan sebagai .xlsx atau .csv.","ext":"xls","file":"../public/uploads/pap_1784621022_pap.xls"}}
+{"time":"2026-07-21 15:03:42","debug_id":"papdbg_6a5f27de970c95.29712209","message":"Unhandled exception","context":{"error":"Gagal membaca file XLS: Format .xls biner memerlukan library tambahan (PhpSpreadsheet). Simpan sebagai .xlsx atau .csv.","trace":"#0 D:\\xampp\\htdocs\\prabasini\\src\\api_pap_import.php(61): handleUploadPap(Object(PapImportRepository))\n#1 {main}"}}
+{"time":"2026-07-21 15:11:13","debug_id":"papdbg_6a5f29a13de568.22330251","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:11:13","debug_id":"papdbg_6a5f29a13de568.22330251","message":"handleGetListPap done","context":{"total":"0","limit":200,"offset":0}}
+{"time":"2026-07-21 15:11:31","debug_id":"papdbg_6a5f29b3d378c7.97346066","message":"Request start","context":{"method":"POST","action":"upload","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":"pap-1784621473249"}}
+{"time":"2026-07-21 15:11:31","debug_id":"papdbg_6a5f29b3d378c7.97346066","message":"handleUploadPap start","context":{"has_file":true,"post_keys":["action","debug_run_id"]}}
+{"time":"2026-07-21 15:11:31","debug_id":"papdbg_6a5f29b3d378c7.97346066","message":"Uploaded file meta","context":{"name":"pap.xls","size":24064,"tmp_name":"D:\\xampp\\tmp\\phpE260.tmp","error":0}}
+{"time":"2026-07-21 15:11:33","debug_id":"papdbg_6a5f29b3d378c7.97346066","message":"Import result","context":{"inserted":1,"errors_count":1}}
+{"time":"2026-07-21 15:11:33","debug_id":"papdbg_6a5f29b585d590.54987723","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:11:33","debug_id":"papdbg_6a5f29b585d590.54987723","message":"handleGetListPap done","context":{"total":"1","limit":200,"offset":0}}
+{"time":"2026-07-21 15:13:19","debug_id":"papdbg_6a5f2a1fd50ad7.37721548","message":"Request start","context":{"method":"GET","action":"generate_pesan","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:13:26","debug_id":"papdbg_6a5f2a25ee7a11.32256163","message":"Request start","context":{"method":"GET","action":"generate_image","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:13:26","debug_id":"papdbg_6a5f2a25ee7a11.32256163","message":"Generate image success","context":{"id":"1","nama_gambar":"pap-1900962260000357-1784621606.0055.png"}}
+{"time":"2026-07-21 15:25:34","debug_id":"papdbg_6a5f2cfe564141.79350639","message":"Request start","context":{"method":"GET","action":"generate_pesan","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:25:42","debug_id":"papdbg_6a5f2d06735b81.57283458","message":"Request start","context":{"method":"GET","action":"generate_image","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-21 15:25:42","debug_id":"papdbg_6a5f2d06735b81.57283458","message":"Generate image success","context":{"id":"1","nama_gambar":"pap-1900962260000357-1784622342.5013.png"}}
+{"time":"2026-07-31 13:34:02","debug_id":"papdbg_6a6c41da343d80.65583900","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-07-31 13:34:02","debug_id":"papdbg_6a6c41da343d80.65583900","message":"handleGetListPap done","context":{"total":"1","limit":200,"offset":0}}
+{"time":"2026-08-07 13:58:55","debug_id":"papdbg_6a75822ecd9135.44399355","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 13:59:20","debug_id":"papdbg_6a75824859c312.04356392","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 13:59:20","debug_id":"papdbg_6a75824859c312.04356392","message":"handleGetListPap done","context":{"total":"1","limit":200,"offset":0}}
+{"time":"2026-08-07 13:59:27","debug_id":"papdbg_6a75824faae967.83694137","message":"Request start","context":{"method":"POST","action":"delete","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 13:59:27","debug_id":"papdbg_6a75824faae967.83694137","message":"Delete success","context":{"id":"1"}}
+{"time":"2026-08-07 13:59:27","debug_id":"papdbg_6a75824fb6abf0.98785159","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 13:59:27","debug_id":"papdbg_6a75824fb6abf0.98785159","message":"handleGetListPap done","context":{"total":"0","limit":200,"offset":0}}
+{"time":"2026-08-07 13:59:34","debug_id":"papdbg_6a75822ecd9135.44399355","message":"handleGetListPap done","context":{"total":"0","limit":200,"offset":0}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583334b1320.86613148","message":"Request start","context":{"method":"POST","action":"upload","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":"pap-1786085960360"}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583334b1320.86613148","message":"handleUploadPap start","context":{"has_file":true,"post_keys":["action","debug_run_id"]}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583334b1320.86613148","message":"Uploaded file meta","context":{"name":"pap.xls","size":24576,"tmp_name":"D:\\xampp\\tmp\\phpDA25.tmp","error":0}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583334b1320.86613148","message":"Import result","context":{"inserted":2,"errors_count":0}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583336bdd44.71625570","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 14:03:15","debug_id":"papdbg_6a7583336bdd44.71625570","message":"handleGetListPap done","context":{"total":"2","limit":200,"offset":0}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836dd3cf87.10512153","message":"Request start","context":{"method":"POST","action":"upload","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":"pap-1786085960360"}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836dd3cf87.10512153","message":"handleUploadPap start","context":{"has_file":true,"post_keys":["action","debug_run_id"]}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836dd3cf87.10512153","message":"Uploaded file meta","context":{"name":"pap-backup.xls","size":24576,"tmp_name":"D:\\xampp\\tmp\\phpBEE9.tmp","error":0}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836dd3cf87.10512153","message":"Import result","context":{"inserted":2,"errors_count":1}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836de74b97.09124594","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 14:04:13","debug_id":"papdbg_6a75836de74b97.09124594","message":"handleGetListPap done","context":{"total":"4","limit":200,"offset":0}}
+{"time":"2026-08-07 14:08:10","debug_id":"papdbg_6a75845a9cabd7.85530861","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 14:08:10","debug_id":"papdbg_6a75845a9cabd7.85530861","message":"handleGetListPap done","context":{"total":"4","limit":200,"offset":0}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a50ec920.89539640","message":"Request start","context":{"method":"POST","action":"upload","origin":"http://localhost","referer":"http://localhost/prabasini/public/pap.php","run_id":"pap-1786086490636"}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a50ec920.89539640","message":"handleUploadPap start","context":{"has_file":true,"post_keys":["action","debug_run_id"]}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a50ec920.89539640","message":"Uploaded file meta","context":{"name":"pap.xls","size":24576,"tmp_name":"D:\\xampp\\tmp\\php7E7D.tmp","error":0}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a50ec920.89539640","message":"Import result","context":{"inserted":2,"errors_count":0}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a5238397.47736107","message":"Request start","context":{"method":"GET","action":"get_list","origin":"","referer":"http://localhost/prabasini/public/pap.php","run_id":""}}
+{"time":"2026-08-07 14:09:25","debug_id":"papdbg_6a7584a5238397.47736107","message":"handleGetListPap done","context":{"total":"6","limit":200,"offset":0}}

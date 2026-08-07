@@ -26,7 +26,7 @@ File Excel untuk import PAP harus memiliki kolom dalam urutan ini:
 | 16 | Tarif Pajak | tarif_pajak | DECIMAL(10,4) | 0.0100 |
 | 17 | Pajak Terutang | pajak_terutang | DECIMAL(15,2) | 50000.00 |
 | 18 | Jumlah PAP | jumlah_pap | DECIMAL(15,2) | 50000.00 |
-| 19 | No HP Wajib Pajak | no_hp | VARCHAR(20) | 08123456789 atau 62812345678 |
+| 19 | No HP Wajib Pajak / No WA | no_hp | VARCHAR(20) | 08123456789 atau 62812345678 |
 | 20+ | Custom Fields (Optional) | custom_field_1-5 | VARCHAR(255) | Kolom tambahan jika perlu |
 
 ## Format File yang Didukung
@@ -134,7 +134,7 @@ curl "http://localhost/prabasini/src/api_pap_import.php?action=generate_pesan&id
 - Cek format kolom sesuai dengan urutan di atas
 
 ### Error "No HP harus diisi"
-- Pastikan kolom No HP (kolom 19) terisi semua
+- Pastikan kolom No HP / No WA terisi semua
 - Format harus valid
 
 ### Tanggal Tidak Terbaca

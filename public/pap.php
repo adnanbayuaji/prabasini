@@ -21,6 +21,50 @@
             padding: 20px 0;
         }
 
+        .upload-toolbar {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .upload-form-wrap {
+            flex: 1 1 560px;
+            min-width: 280px;
+        }
+
+        .upload-side {
+            flex: 0 0 220px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-bulk-delete {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #dc3545 0%, #b02a37 100%);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(220, 53, 69, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-bulk-delete:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(220, 53, 69, 0.28);
+        }
+
+        .btn-bulk-delete:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
         .container-main {
             max-width: 1300px;
             background: white;
@@ -235,8 +279,8 @@
             </details>
 
             <div class="upload-section">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
+                <div class="upload-toolbar">
+                    <div class="upload-form-wrap">
                         <form id="uploadForm" method="post" action="javascript:void(0)" onsubmit="return false;" enctype="multipart/form-data" novalidate>
                             <div class="upload-area" id="uploadArea">
                                 <div>
@@ -248,10 +292,13 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-4">
+                    <div class="upload-side">
+                        <button type="button" class="btn-bulk-delete" id="deleteAllButton">
+                            <i class="fas fa-trash-alt me-2"></i> Hapus Semua Data
+                        </button>
                         <div class="loader" id="loader">
                             <div class="spinner"></div>
-                            <p class="mt-2">Sedang mengupload...</p>
+                            <p class="mt-2 mb-0">Sedang mengupload...</p>
                         </div>
                     </div>
                 </div>
@@ -281,6 +328,7 @@
         const uploadForm = document.getElementById('uploadForm');
         const loader = document.getElementById('loader');
         const alertContainer = document.getElementById('alertContainer');
+        const deleteAllButton = document.getElementById('deleteAllButton');
         const debugLogEl = document.getElementById('debugLog');
         const debugEvents = [];
         const runId = `pap-${Date.now()}`;
@@ -471,7 +519,7 @@
                             <th>Nomor VA</th>
                             <th>Nomor Berkas</th>
                             <th>Nama Wajib Pajak</th>
-                            <th>No. HP</th>
+                            <th>No. WA</th>
                             <th>Tanggal Penetapan</th>
                             <th>Jatuh Tempo</th>
                             <th>Jumlah PAP</th>
@@ -589,9 +637,61 @@
                     new ClipboardItem({ [blob.type || 'image/png']: blob })
                 ]);
                 showAlert('success', 'Gambar berhasil disalin ke clipboard');
+                markAsSent(id);
             } catch (err) {
                 showAlert('danger', `Gagal copy gambar: ${err.message}`);
             }
+        }
+
+        function markAsSent(id) {
+            const formData = new FormData();
+            formData.append('action', 'update_status');
+            formData.append('id', id);
+            formData.append('status', '0');
+
+            fetch(apiUrl, {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        loadData();
+                    } else {
+                        showAlert('danger', `Gagal memperbarui status: ${data.message}`);
+                    }
+                })
+                .catch(err => {
+                    showAlert('danger', `Gagal memperbarui status: ${err.message}`);
+                });
+        }
+
+        function deleteAllData() {
+            if (!confirm('Yakin ingin menghapus semua data PAP? Tindakan ini tidak dapat dibatalkan.')) return;
+
+            deleteAllButton.disabled = true;
+            const formData = new FormData();
+            formData.append('action', 'delete_all');
+
+            fetch(apiUrl, {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showAlert('success', data.message || 'Semua data berhasil dihapus');
+                        loadData();
+                    } else {
+                        showAlert('danger', `Gagal hapus semua data: ${data.message}`);
+                    }
+                })
+                .catch(err => {
+                    showAlert('danger', `Terjadi kesalahan: ${err.message}`);
+                })
+                .finally(() => {
+                    deleteAllButton.disabled = false;
+                });
         }
 
         function deleteData(id) {
@@ -665,6 +765,8 @@
         }
 
         loadData();
+
+        deleteAllButton.addEventListener('click', deleteAllData);
     </script>
 </body>
 </html>

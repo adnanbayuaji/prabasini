@@ -72,6 +72,14 @@ try {
         case 'delete':
             handleDeletePap($papImportRepo);
             break;
+
+        case 'delete_all':
+            handleDeleteAllPap($papImportRepo);
+            break;
+
+        case 'update_status':
+            handleUpdateStatusPap($papImportRepo);
+            break;
             
         case 'generate_pesan':
             handleGeneratePesanPap();
@@ -96,6 +104,37 @@ try {
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
 
+function handleDeleteAllPap($papImportRepo) {
+    $deleted = $papImportRepo->deleteAll();
+
+    papDebugLog('Delete all success', ['deleted' => $deleted]);
+
+    echo json_encode([
+        'success' => true,
+        'message' => 'Semua data berhasil dihapus',
+        'deleted' => $deleted
+    ]);
+}
+
+function handleUpdateStatusPap($papImportRepo) {
+    $id = $_POST['id'] ?? null;
+    $status = $_POST['status'] ?? '0';
+
+    if (!$id) {
+        throw new Exception('ID tidak ditemukan');
+    }
+
+    if (!in_array($status, ['0', '1'], true)) {
+        throw new Exception('Status tidak valid');
+    }
+
+    if ($papImportRepo->updateStatus($id, $status)) {
+        papDebugLog('Update status success', ['id' => $id, 'status' => $status]);
+        echo json_encode(['success' => true, 'message' => 'Status berhasil diperbarui']);
+    } else {
+        throw new Exception('Gagal memperbarui status');
+    }
+}
 function handleUploadPap($papImportRepo) {
     papDebugLog('handleUploadPap start', [
         'has_file' => isset($_FILES['file']),
@@ -154,6 +193,15 @@ function handleUploadPap($papImportRepo) {
             'ext' => $ext,
             'file' => $filePath
         ]);
+
+        // Berikan pesan error yang lebih informatif jika PhpSpreadsheet tidak ada
+        if (strpos($e->getMessage(), 'PhpSpreadsheet') !== false) {
+            throw new Exception(
+                'Gagal membaca file ' . strtoupper($ext) . '. Format ini memerlukan library tambahan. ' .
+                'Solusi: Simpan ulang file sebagai .xlsx atau .csv. ' .
+                'Untuk developer: jalankan `composer install` untuk mengaktifkan dukungan format ini.'
+            );
+        }
 
         if ($ext === 'csv') {
             throw new Exception('Gagal membaca file CSV: ' . $e->getMessage());

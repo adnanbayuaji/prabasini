@@ -124,8 +124,9 @@ class PapImportRepository {
             try {
                 // Map Excel columns to database fields
                 // Kolom urutan dari Excel harus sesuai dengan file yang di-upload
-                $rawNoHpPrimary = $row[22] ?? null;   // mengikuti referensi webhook (field 23)
-                $rawNoHpFallback = $row[18] ?? null;  // fallback format lama
+                $rawNoHpPrimary = $row[21] ?? null;   // kolom V / no_wa pada pap.xls
+                $rawNoHpFallback = $row[22] ?? null;   // fallback format lama
+                $rawNoHpLegacy = $row[18] ?? null;     // fallback format paling lama
 
                 $data = [
                     'nomor_virtual_account' => trim($row[0] ?? ''),      // Col 0
@@ -146,7 +147,7 @@ class PapImportRepository {
                     'tarif_pajak' => floatval($row[15] ?? 0),            // Col 15
                     'pajak_terutang' => floatval($row[16] ?? 0),         // Col 16
                     'jumlah_pap' => floatval($row[17] ?? 0),             // Col 17
-                    'no_hp' => $this->sanitizePhone($rawNoHpPrimary ?? $rawNoHpFallback),
+                    'no_hp' => $this->sanitizePhone($rawNoHpPrimary ?? $rawNoHpFallback ?? $rawNoHpLegacy),
                 ];
                 
                 // Custom fields jika ada
@@ -293,6 +294,26 @@ class PapImportRepository {
         $sql = "DELETE FROM pap_import WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([':id' => $id]);
+    }
+
+    /**
+     * Delete all PAP data
+     */
+    public function deleteAll() {
+        $sql = "DELETE FROM pap_import";
+        return $this->pdo->exec($sql);
+    }
+
+    /**
+     * Update status PAP
+     */
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE pap_import SET status_pap = :status WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id,
+            ':status' => $status,
+        ]);
     }
     
     /**
