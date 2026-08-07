@@ -2,9 +2,6 @@
 public/uploads/
 logs/
 
-# Composer vendor dependencies
-vendor/
-
 # OS/editor noise
 .DS_Store
 Thumbs.db
