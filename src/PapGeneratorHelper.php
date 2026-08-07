@@ -104,39 +104,39 @@ UPT PPD MALANG UTARA & BATU KOTA";
         $text_color = imagecolorallocate($img, 0x00, 0x00, 0x00);
         $font = function_exists('imageloadfont') ? @imageloadfont('../css/arial.gdf') : false;
         if (!$font) {
-            $font = 3;
+            $font = 5;
         }
         $fontTTF = '../css/arial.ttf';
         $canUseTtf = function_exists('imagettftext') && file_exists($fontTTF);
-        $fontSize = 13;
+        $fontSize = 22;
         
         // Virtual Account (big)
         imagestring($img, $font, 480, 227, $a, $text_color);
         
         // Data fields. Prioritaskan TTF dengan size lebih besar agar terbaca jelas.
         if ($canUseTtf) {
-            imagettftext($img, $fontSize, 0, 248, 263, $text_color, $fontTTF, $b);
-            imagettftext($img, $fontSize, 0, 248, 291, $text_color, $fontTTF, $c);
-            imagettftext($img, $fontSize, 0, 248, 319, $text_color, $fontTTF, $d);
-            imagettftext($img, $fontSize, 0, 248, 347, $text_color, $fontTTF, $e);
-            imagettftext($img, $fontSize, 0, 248, 375, $text_color, $fontTTF, $f);
+            imagettftext($img, $fontSize, 0, 248, 250, $text_color, $fontTTF, $b);
+            imagettftext($img, $fontSize, 0, 248, 278, $text_color, $fontTTF, $c);
+            imagettftext($img, $fontSize, 0, 248, 306, $text_color, $fontTTF, $d);
+            imagettftext($img, $fontSize, 0, 248, 334, $text_color, $fontTTF, $e);
+            imagettftext($img, $fontSize, 0, 248, 362, $text_color, $fontTTF, $f);
 
-            imagettftext($img, $fontSize, 0, 745, 263, $text_color, $fontTTF, $g);
-            imagettftext($img, $fontSize, 0, 745, 291, $text_color, $fontTTF, $h);
-            imagettftext($img, $fontSize, 0, 745, 319, $text_color, $fontTTF, $i);
-            imagettftext($img, $fontSize, 0, 745, 347, $text_color, $fontTTF, $j);
+            imagettftext($img, $fontSize, 0, 745, 250, $text_color, $fontTTF, $g);
+            imagettftext($img, $fontSize, 0, 745, 278, $text_color, $fontTTF, $h);
+            imagettftext($img, $fontSize, 0, 745, 306, $text_color, $fontTTF, $i);
+            imagettftext($img, $fontSize, 0, 745, 334, $text_color, $fontTTF, $j);
         } else {
             // Fallback gaya cetak_gambar: seluruh teks pakai imagestring + font gdf.
-            imagestring($img, $font, 248, 263, $b, $text_color);
-            imagestring($img, $font, 248, 291, $c, $text_color);
-            imagestring($img, $font, 248, 319, $d, $text_color);
-            imagestring($img, $font, 248, 347, $e, $text_color);
-            imagestring($img, $font, 248, 375, $f, $text_color);
+            imagestring($img, $font, 248, 250, $b, $text_color);
+            imagestring($img, $font, 248, 278, $c, $text_color);
+            imagestring($img, $font, 248, 306, $d, $text_color);
+            imagestring($img, $font, 248, 334, $e, $text_color);
+            imagestring($img, $font, 248, 362, $f, $text_color);
 
-            imagestring($img, $font, 745, 263, $g, $text_color);
-            imagestring($img, $font, 745, 291, $h, $text_color);
-            imagestring($img, $font, 745, 319, $i, $text_color);
-            imagestring($img, $font, 745, 347, $j, $text_color);
+            imagestring($img, $font, 745, 250, $g, $text_color);
+            imagestring($img, $font, 745, 278, $h, $text_color);
+            imagestring($img, $font, 745, 306, $i, $text_color);
+            imagestring($img, $font, 745, 334, $j, $text_color);
         }
         
         // Tanggal ditetapkan
