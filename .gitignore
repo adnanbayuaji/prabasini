@@ -1,6 +1,8 @@
 # Generated uploads and runtime artifacts
-public/uploads/
-logs/
+public/uploads/*
+!public/uploads/.gitkeep
+logs/*
+!logs/.gitkeep
 
 # OS/editor noise
 .DS_Store
