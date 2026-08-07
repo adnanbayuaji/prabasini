@@ -181,6 +181,27 @@
             transform: translateY(-2px);
         }
 
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .status-pending {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        .status-sent {
+            background: #ecfdf5;
+            color: #047857;
+        }
+
         .upload-area {
             border: 2px dashed #667eea;
             border-radius: 8px;
@@ -520,6 +541,7 @@
                             <th>Nomor Berkas</th>
                             <th>Nama Wajib Pajak</th>
                             <th>No. WA</th>
+                            <th>Status</th>
                             <th>Tanggal Penetapan</th>
                             <th>Jatuh Tempo</th>
                             <th>Jumlah PAP</th>
@@ -531,6 +553,9 @@
 
             data.forEach((item, index) => {
                 const noHp = formatWaNumber(item.no_hp || '');
+                const statusPap = String(item.status_pap ?? '1');
+                const statusLabel = statusPap === '0' ? 'Sudah terkirim' : 'Belum terkirim';
+                const statusClass = statusPap === '0' ? 'status-sent' : 'status-pending';
                 const tanggalPenetapan = formatDate(item.ditetapkan_tanggal);
                 const jatuhTempo = formatDate(item.jatuh_tempo_pembayaran);
                 const jumlahPap = formatRupiah(item.jumlah_pap);
@@ -542,12 +567,13 @@
                         <td>${escapeHtml(item.nomor_berkas || '-')}</td>
                         <td>${escapeHtml(item.nama_wajib_pajak || '-')}</td>
                         <td>${escapeHtml(noHp || '-')}</td>
+                        <td><span class="status-badge ${statusClass}"><i class="fas fa-circle" style="font-size: 8px;"></i>${statusLabel}</span></td>
                         <td><small>${tanggalPenetapan}</small></td>
                         <td><small>${jatuhTempo}</small></td>
                         <td><strong>${jumlahPap}</strong></td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-action btn-wa" onclick="sendWA('${escapeForInline(noHp)}')">
+                                <button class="btn-action btn-wa" onclick="markAsSentAndOpenWa(${Number(item.id)}, '${escapeForInline(noHp)}')">
                                     <i class="fab fa-whatsapp"></i> WA.me
                                 </button>
                                 <button class="btn-action btn-copy" onclick="copyPesan(${Number(item.id)})">
@@ -591,10 +617,16 @@
                 showAlert('danger', `Nomor tujuan tidak valid: ${nomor}`);
                 return;
             }
-            const waUrl = `https://wa.me/${cleanNomor}`;
-            const win = window.open(waUrl, '_blank', 'noopener');
+            const waUrl = `https://web.whatsapp.com/send?phone=${encodeURIComponent(cleanNomor)}`;
+            const win = window.open(waUrl, 'prabasini-wa');
             if (!win) {
-                window.location.href = waUrl;
+                showAlert('warning', 'Popup diblokir browser. Izinkan popup untuk membuka WhatsApp Web di tab yang sama.');
+                return;
+            }
+            try {
+                win.focus();
+            } catch (e) {
+                // Abaikan jika browser membatasi focus antar tab.
             }
         }
 
@@ -664,6 +696,11 @@
                 .catch(err => {
                     showAlert('danger', `Gagal memperbarui status: ${err.message}`);
                 });
+        }
+
+        function markAsSentAndOpenWa(id, nomor) {
+            sendWA(nomor);
+            markAsSent(id);
         }
 
         function deleteAllData() {

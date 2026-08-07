@@ -230,7 +230,7 @@ class PapImportRepository {
      * Get all PAP data
      */
     public function getAll($limit = 100, $offset = 0) {
-        $sql = "SELECT * FROM pap_import WHERE status_pap='1' ORDER BY date_pap DESC LIMIT :offset, :limit";
+        $sql = "SELECT * FROM pap_import ORDER BY date_pap DESC LIMIT :offset, :limit";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -417,7 +417,7 @@ class PapImportRepository {
      * Get total records
      */
     public function count() {
-        $sql = "SELECT COUNT(*) as total FROM pap_import WHERE status_pap='1'";
+        $sql = "SELECT COUNT(*) as total FROM pap_import";
         $stmt = $this->pdo->query($sql);
         $result = $stmt->fetch();
         return $result['total'] ?? 0;
